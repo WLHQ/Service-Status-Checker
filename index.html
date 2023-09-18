@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Status Checker</title>
+    <meta name="description" content="This is my website description.">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin-top: 10px;
+        }
+
+        .centered-text {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* TV screen */
+        @media (min-width: 1200px) {
+            .centered-text {
+                font-size: 42px;
+            }
+            .button {
+                font-size: 38px;
+            }
+            .image-button span {
+            font-size: 38px;
+            }
+            /* Wrap the button in an anchor tag with the href attribute */
+            .button a {
+                text-decoration: none; /* Remove underline from the link */
+                color: white; /* Set link text color */
+                display: block; /* Make the link cover the entire button */
+                height: 100%; /* Make the link fill the button's height */
+                width: 100%; /* Make the link fill the button's width */
+            }
+        }
+
+        /* Computer screen */
+        @media (min-width: 992px) and (max-width: 1199px) {
+            .centered-text {
+                font-size: 32px;
+            }
+            .button {
+                font-size: 24px;
+            }
+            .image-button span {
+            font-size: 24px;
+            }
+        }
+
+        /* Tablet screen or larger cellphone */
+        @media (min-width: 600px) and (max-width: 991px) {
+            .centered-text {
+                font-size: 22px;
+            }
+            .button {
+                font-size: 18px;
+            }
+            .image-button span {
+            font-size: 18px;
+            }
+        }
+
+        /* Smaller cellphone */
+        @media (max-width: 599px) {
+            .centered-text {
+                font-size: 18px;
+            }
+            .button {
+                font-size: 16px;
+            }
+            .image-button span {
+            font-size: 16px;
+            }
+        }
+
+        button {
+            background-color: #0037ff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 0, 0, 0.2);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: rgba(93, 114, 255, 0.848); /* Semi-white background on hover */
+            transform: scale(1.05); /* Slight scale-up on hover */
+            box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+            animation-name: fade;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fade {
+            0% {
+                box-shadow: inset 0 0 0 2px rgb(0, 225, 255);
+            }
+
+            50% {
+                box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+            }
+
+            100% {
+                box-shadow: inset 0 0 0 2px rgb(0, 225, 255);
+            }
+        }
+
+        /* Style for the button container */
+        /* Add margin to create spacing between image buttons */
+        .image-button {
+            background-color: #0037ff;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 20px; /* Adjust this value to control the spacing */
+            cursor: pointer;
+            border-radius: 12px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Style for the image */
+        .image-button img {
+            width: 100px;
+            height: 100px;
+            margin-right: 10px;
+        }
+
+        /* Hover effect */
+        .image-button:hover {
+            background-color: rgba(93, 114, 255, 0.848);
+            transform: scale(1.05);
+            box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+            animation-name: fade;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fade {
+            0% {
+                box-shadow: inset 0 0 0 2px rgb(0, 225, 255);
+            }
+
+            50% {
+                box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+            }
+
+            100% {
+                box-shadow: inset 0 0 0 2px rgb(0, 225, 255);
+            }
+        }
+    </style>
+    <script>
+        // Function to update the current date and time
+        function updateDateTime() {
+            var dateElement = document.getElementById("date");
+            var timeElement = document.getElementById("time");
+
+            var currentDate = new Date();
+
+            // Format the date and time as desired
+            var date = currentDate.toDateString();
+            var time = currentDate.toLocaleTimeString();
+
+            // Update the HTML elements with the current date and time
+            dateElement.textContent = "Current Date: " + date;
+            timeElement.textContent = "Current Time: " + time;
+        }
+        // Call the resizeText function on page load and whenever the window is resized
+        window.addEventListener("load", function () {
+            updateDateTime();
+        });
+
+        // Update the date and time every second
+        setInterval(updateDateTime, 1000);
+    </script>
+</head>
+<body>
+    <div class="centered-text">
+        <h1>Service Status Checker</h1>
+        <picture>
+            <!-- WebP image source -->
+            <source srcset="" type="image/webp" alt="" width="300" height="300">
+            <!-- Fallback image source (JPEG) -->
+            <img src="img/Service Status Checker.jpg" alt="" alt="" width="192" height="192">
+        </picture>
+        <p>Check the status of multiple services! This is the web version of Service Status Checker.</p>
+        <p id="date">Fetching Current Date...</p>
+        <p id="time">Fetching Current Time...</p>
+    </div>
+    <div class="centered-text">
+        <p>Navigation Tools:</p>
+        <button class="button" onclick="location.reload()">Reload this page</button>
+        <button class="button" onclick="window.close()">Close This Page</button>
+        <!-- Inside the <div class="centered-text"> section -->
+        <p>Services:</p>
+        <div class="button">
+            <a href="https://status.adguard.com/" class="image-button">
+                <img src="img/AdGuard.png" alt="AdGuard Logo">
+                <span>AdGuard</span>
+            </a>
+            <a href="https://www.apple.com/support/systemstatus/" class="image-button">
+                <img src="img/Apple.png" alt="Apple Logo">
+                <span>Apple</span>
+            </a>
+            <a href="https://status.brave.com/" class="image-button">
+                <img src="img/Brave.png" alt="Brave Browser Logo">
+                <span>Brave</span>
+            </a>
+            <a href="https://status.coveragemap.com/" class="image-button">
+                <img src="img/CoverageMap.png" alt="Coverage Map Logo">
+                <span>Coverage Map</span>
+            </a>
+            <a href="https://www.cloudflarestatus.com/" class="image-button">
+                <img src="img/CloudFlare.png" alt="CloudFlare Logo">
+                <span>CloudFlare</span>
+            </a>
+            <a href="https://discordstatus.com/" class="image-button">
+                <img src="img/Discord.png" alt="Discord Logo">
+                <span>Discord</span>
+            </a>
+            <a href="https://status.epicgames.com/" class="image-button">
+                <img src="img/Epic Games.png" alt="Epic Games Logo">
+                <span>Epic Games</span>
+            </a>
+            <a href="https://www.githubstatus.com/" class="image-button">
+                <img src="img/GitHub.png" alt="GitHub Logo">
+                <span>GitHub</span>
+            </a>
+            <a href="https://status.glideapps.com/" class="image-button">
+                <img src="img/Glide.png" alt="Glide Logo">
+                <span>Glide</span>
+            </a>
+            <a href="https://status.hirezstudios.com/" class="image-button">
+                <img src="img/Hi Rez Studios.png" alt="Hi Rez Studios Logo">
+                <span>Hi Rez Studios</span>
+            </a>
+            <a href="https://status.midjourney.com/" class="image-button">
+                <img src="img/Midjourney.png" alt="Midjourney Logo">
+                <span>Midjourney</span>
+            </a>
+            <a href="https://nintendoswitchuidemo1.statuspage.io/" class="image-button">
+                <img src="img/NXUIDemo.png" alt="Nintendo Switch UI Demo Logo">
+                <span>Nintendo Switch UI Demo</span>
+            </a>
+            <a href="https://www.nintendo.co.jp/netinfo/en_US/index.html" class="image-button">
+                <img src="img/Nintendo Network.png" alt="Nintendo Network Logo">
+                <span>Nintendo Network</span>
+            </a>
+            <a href="https://status.geforcenow.com/" class="image-button">
+                <img src="img/Nvidia.png" alt="Nvidia GeForce NOW Logo">
+                <span>Nvidia GeForce NOW</span>
+            </a>
+            <a href="https://status.ookla.com/" class="image-button">
+                <img src="img/Speedtest.png" alt="Ookla Logo">
+                <span>Ookla</span>
+            </a>
+            <a href="https://status.playstation.com/" class="image-button">
+                <img src="img/PSN.png" alt="PlayStation Network Logo">
+                <span>PlayStation Network</span>
+            </a>
+            <a href="https://stats.uptimerobot.com/nPQgocX0AB" class="image-button">
+                <img src="img/RoutineHub.png" alt="Routinehub Logo">
+                <span>Routinehub</span>
+            </a>
+            <a href="https://status.twitch.com/" class="image-button">
+                <img src="img/Twitch.png" alt="Twitch Logo">
+                <span>Twitch</span>
+            </a>
+            <a href="https://status.twitterstat.us/" class="image-button">
+                <img src="img/Twitter.png" alt="Twitter Logo">
+                <span>Twitter</span>
+            </a>
+            <a href="https://github.win11react.com/status/" class="image-button">
+                <img src="img/Win11.png" alt="Win11React by Blueedge Logo">
+                <span>Win11React by Blueedge</span>
+            </a>
+            <a href="https://support.xbox.com/en-US/xbox-live-status" class="image-button">
+                <img src="img/Xbox.png" alt="Xbox Logo">
+                <span>Xbox</span>
+            </a>
+        </div>
+        <div class="footer">
+            <div id="wcb" class="carbonbadge wcb-d"></div>
+            <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+        <p>Hosted by GitHub.</p>
+    </div>
+</body>
+</html>
