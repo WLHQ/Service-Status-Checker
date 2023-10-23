@@ -1,8 +1,9 @@
-const staticCacheName = 'site-static-pwa-v1.0.0';
-const dynamicCacheName = 'site-dynamic-pwa-v1.0.0';
+const staticCacheName = 'site-static-pwa-v1.0.1';
+const dynamicCacheName = 'site-dynamic-pwa-v1.0.1';
 const assets = [
 	'/Service-Status-Checker/',
-	'/Service-Status-Checker/index.html'
+	'/Service-Status-Checker/index.html',
+    '/Service-Status-Checker/offline.html'
 ]
 
 
@@ -51,7 +52,7 @@ self.addEventListener('fetch', evt => {
                 return caches.open(dynamicCacheName).then(cache => {
                     cache.put(evt.request.url, fetchRes.clone());
                     // check cached items size
-                    limitCacheSize(dynamicCacheName, 30);
+                    limitCacheSize(dynamicCacheName, 35);
                     return fetchRes;
                 })
             });

@@ -2,12 +2,8 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Status Checker</title>
-    <link id="manifest-link" rel="manifest" href="manifest.json">
-    <meta name="description" content="Service Status Checker for the web.">
-    <script src="JS/app.js"></script>
-    <link id="apple-touch-icon" rel="apple-touch-icon" href="/Service-Status-Checker/img/icons/icon-192x192.png">
-    <meta name="mobile-web-app-capable" content="yes">
+    <title>Service Status Checker - Offline</title>
+    <meta name="description" content="Service Status Checker for the web. Offline">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <style>
         body {
@@ -226,122 +222,22 @@
 </head>
 <body>
     <div class="centered-text">
-        <h1>Service Status Checker</h1>
+        <h1>Service Status Checker - Offline</h1>
         <picture>
             <!-- WebP image source -->
             <source srcset="" type="image/webp" alt="" width="300" height="300">
             <!-- Fallback image source (JPEG) -->
             <img src="img/Service Status Checker Upscaled.png" alt="" alt="" width="192" height="192">
         </picture>
-        <p>Check the status of multiple services! This is the web version of Service Status Checker.</p>
+        <p>It seems you are currently offline. Please reconnect to the internet and try again.</p>
         <p id="date">Fetching Current Date...</p>
         <p id="time">Fetching Current Time...</p>
     </div>
     <div class="centered-text">
         <p>Navigation Tools:</p>
-        <button class="button" onclick="location.reload()">Reload Page</button>
         <button class="button" onclick="window.close()">Close Page</button>
-        <p>My Other Websites:</p>
-        <a href="https://wlhq.github.io/WLHQ/"><button class="button">WLHQ's New Website</button></a>
+        <a href="index.html"><button class="button">Back to Home</button></a>
         <!-- Inside the <div class="centered-text"> section -->
-        <p>Services:</p>
-        <div class="button">
-            <a href="https://status.adguard.com/" class="image-button">
-                <img src="img/AdGuard.png" alt="AdGuard Logo">
-                <span>AdGuard</span>
-            </a>
-            <a href="https://www.apple.com/support/systemstatus/" class="image-button">
-                <img src="img/Apple.png" alt="Apple Logo">
-                <span>Apple</span>
-            </a>
-            <a href="https://status.atlassian.com/" class="image-button">
-                <img src="img/Atlassian.PNG" alt="Atlassian Logo">
-                <span>Atlassian</span>
-            </a>
-            <a href="https://status.brave.com/" class="image-button">
-                <img src="img/Brave.png" alt="Brave Browser Logo">
-                <span>Brave</span>
-            </a>
-            <a href="https://status.coveragemap.com/" class="image-button">
-                <img src="img/CoverageMap.png" alt="Coverage Map Logo">
-                <span>Coverage Map</span>
-            </a>
-            <a href="https://www.cloudflarestatus.com/" class="image-button">
-                <img src="img/CloudFlare.png" alt="CloudFlare Logo">
-                <span>CloudFlare</span>
-            </a>
-            <a href="https://discordstatus.com/" class="image-button">
-                <img src="img/Discord.png" alt="Discord Logo">
-                <span>Discord</span>
-            </a>
-            <a href="https://status.epicgames.com/" class="image-button">
-                <img src="img/Epic Games.png" alt="Epic Games Logo">
-                <span>Epic Games</span>
-            </a>
-            <a href="https://www.githubstatus.com/" class="image-button">
-                <img src="img/GitHub.png" alt="GitHub Logo">
-                <span>GitHub</span>
-            </a>
-            <a href="https://status.glideapps.com/" class="image-button">
-                <img src="img/Glide.png" alt="Glide Logo">
-                <span>Glide</span>
-            </a>
-            <a href="https://status.hirezstudios.com/" class="image-button">
-                <img src="img/Hi Rez Studios.png" alt="Hi Rez Studios Logo">
-                <span>Hi Rez Studios</span>
-            </a>
-            <a href="https://status.midjourney.com/" class="image-button">
-                <img src="img/Midjourney.png" alt="Midjourney Logo">
-                <span>Midjourney</span>
-            </a>
-            <a href="https://nintendoswitchuidemo1.statuspage.io/" class="image-button">
-                <img src="img/NXUIDemo.png" alt="Nintendo Switch UI Demo Logo">
-                <span>Nintendo Switch UI Demo</span>
-            </a>
-            <a href="https://www.nintendo.co.jp/netinfo/en_US/index.html" class="image-button">
-                <img src="img/Nintendo Network.png" alt="Nintendo Network Logo">
-                <span>Nintendo Network</span>
-            </a>
-            <a href="https://status.geforcenow.com/" class="image-button">
-                <img src="img/Nvidia.png" alt="Nvidia GeForce NOW Logo">
-                <span>Nvidia GeForce NOW</span>
-            </a>
-            <a href="https://status.openai.com/" class="image-button">
-                <img src="img/OpenAI.PNG" alt="OpenAI Logo">
-                <span>OpenAI</span>
-            </a>
-            <a href="https://status.ookla.com/" class="image-button">
-                <img src="img/Speedtest.png" alt="Ookla Logo">
-                <span>Ookla</span>
-            </a>
-            <a href="https://status.playstation.com/" class="image-button">
-                <img src="img/PSN.png" alt="PlayStation Network Logo">
-                <span>PlayStation Network</span>
-            </a>
-            <a href="https://stats.uptimerobot.com/nPQgocX0AB" class="image-button">
-                <img src="img/RoutineHub-2.png" alt="Routinehub Logo">
-                <span>Routinehub</span>
-            </a>
-            <a href="https://status.twitch.com/" class="image-button">
-                <img src="img/Twitch.png" alt="Twitch Logo">
-                <span>Twitch</span>
-            </a>
-            <a href="https://status.twitterstat.us/" class="image-button">
-                <img src="img/Twitter.png" alt="Twitter Logo">
-                <span>Twitter</span>
-            </a>
-            <a href="https://github.win11react.com/status/" class="image-button">
-                <img src="img/Win11.png" alt="Win11React by Blueedge Logo">
-                <span>Win11React by Blueedge</span>
-            </a>
-            <a href="https://support.xbox.com/en-US/xbox-live-status" class="image-button">
-                <img src="img/Xbox.png" alt="Xbox Logo">
-                <span>Xbox</span>
-            </a>
-        </div>
-        <div class="footer">
-            <div id="wcb" class="carbonbadge wcb-d"></div>
-            <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
         <p>Hosted by GitHub.</p>
     </div>
 </body>
