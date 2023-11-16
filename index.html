@@ -103,7 +103,7 @@
         }
 
         button {
-            background-color: #0037ff;
+            background-color: #0024a8;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -130,7 +130,7 @@
         }
 
         button:hover {
-            background-color: rgba(93, 114, 255, 0.848); /* Semi-white background on hover */
+            background-color: rgba(52, 79, 255, 0.848); /* Semi-white background on hover */
             transform: scale(1.05); /* Slight scale-up on hover */
             box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
             animation-name: fade;
@@ -155,7 +155,7 @@
         /* Style for the button container */
         /* Add margin to create spacing between image buttons */
         .image-button {
-            background-color: #0037ff;
+            background-color: #0024a8;
             border: none;
             color: white;
             padding: 15px 32px;
@@ -177,7 +177,7 @@
 
         /* Hover effect */
         .image-button:hover {
-            background-color: rgba(93, 114, 255, 0.848);
+            background-color: rgba(52, 79, 255, 0.848);
             transform: scale(1.05);
             box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
             animation-name: fade;
@@ -236,13 +236,24 @@
         <p>Check the status of multiple services! This is the web version of Service Status Checker.</p>
         <p id="date">Fetching Current Date...</p>
         <p id="time">Fetching Current Time...</p>
+        <p>Service Worker Version: v1.0.3</p>
     </div>
     <div class="centered-text">
         <p>Navigation Tools:</p>
-        <button class="button" onclick="location.reload()">Reload Page</button>
-        <button class="button" onclick="window.close()">Close Page</button>
-        <p>My Other Websites:</p>
-        <a href="https://wlhq.github.io/WLHQ/"><button class="button">WLHQ's New Website</button></a>
+        <div class="button">
+            <a href="" onclick="restartPWA(), location.reload(true)" class="image-button">
+                <img src="img/reload.png" alt="Reload Icon">
+                <span>Reload Page (Experimental)</span>
+            </a>
+            <a href="" onclick="window.close()" class="image-button">
+                <img src="img/close.png" alt="Close Icon">
+                <span>Close Page</span>
+            </a>
+            <p>My Other Websites:</p>
+            <a href="https://wlhq.github.io/WLHQ/" class="image-button">
+                <span>WLHQ's Website</span>
+            </a>
+        </div>
         <!-- Inside the <div class="centered-text"> section -->
         <p>Services:</p>
         <div class="button">
