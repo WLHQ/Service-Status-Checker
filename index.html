@@ -202,20 +202,14 @@
     <script>
         // Function to update the current date and time
         function updateDateTime() {
-            var dateElement = document.getElementById("date");
-            var timeElement = document.getElementById("time");
-
+            var dateTimeElement = document.getElementById("date-time");
             var currentDate = new Date();
-
-            // Format the date and time as desired
             var date = currentDate.toDateString();
             var time = currentDate.toLocaleTimeString();
-
-            // Update the HTML elements with the current date and time
-            dateElement.textContent = "Current Date: " + date;
-            timeElement.textContent = "Current Time: " + time;
+            dateTimeElement.textContent = "Current Date: " + date + " | Current Time: " + time;
         }
-        // Call the resizeText function on page load and whenever the window is resized
+
+        // Call the updateDateTime function on page load and whenever the window is resized
         window.addEventListener("load", function () {
             updateDateTime();
         });
@@ -234,9 +228,8 @@
             <img src="img/Service Status Checker Upscaled.png" alt="" alt="" width="192" height="192">
         </picture>
         <p>Check the status of multiple services! This is the web version of Service Status Checker.</p>
-        <p id="date">Fetching Current Date...</p>
-        <p id="time">Fetching Current Time...</p>
-        <p>Service Worker Version: v1.0.3</p>
+        <p id="date-time">Fetching Current Date and Time...</p>
+        <p>Service Worker Version: v1.0.4</p>
     </div>
     <div class="centered-text">
         <p>Navigation Tools:</p>
