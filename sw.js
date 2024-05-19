@@ -1,5 +1,5 @@
-const staticCacheName = 'site-static-pwa-v1.0.5';
-const dynamicCacheName = 'site-dynamic-pwa-v1.0.5';
+const staticCacheName = 'site-static-pwa-v1.0.6';
+const dynamicCacheName = 'site-dynamic-pwa-v1.0.6';
 const assets = [
 	'/Service-Status-Checker/',
 	'/Service-Status-Checker/index.html',
